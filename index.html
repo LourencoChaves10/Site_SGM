@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+
+  <!-- MDBootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/mdb-ui-kit@6.4.2/css/mdb.min.css" rel="stylesheet">
+
+  <style>
+    body {
+      background-color: #EEF0F2; /* platinum */
+    }
+
+    .login-title {
+      color: #001233; /* prussian_blue_3 */
+    }
+
+    .gradient-custom {
+      background: linear-gradient(
+        to right,
+        #0466C8, /* smart_blue */
+        #0353A4, /* steel_azure */
+        #023E7D  /* regal_navy */
+      );
+    }
+
+    .btn-login {
+      color: #FFFFFF;
+    }
+
+    .btn-login:hover {
+      background: linear-gradient(
+        to right,
+        #0353A4,
+        #023E7D,
+        #002855
+      );
+    }
+
+    .form-outline .form-control:focus ~ .form-label {
+      color: #0466C8;
+    }
+
+    .form-outline .form-control:focus {
+      border-color: #0466C8;
+      box-shadow: 0 0 0 0.2rem rgba(4, 102, 200, 0.25);
+    }
+
+    a {
+      color: #0466C8;
+    }
+
+    a:hover {
+      color: #023E7D;
+    }
+  </style>
+</head>
+
+<body>
+<section class="vh-100 d-flex align-items-center justify-content-center">
+  <div class="col-md-6 col-lg-4">
+    <div class="card rounded-4 shadow">
+      <div class="card-body p-4">
+
+        <!-- LOGO -->
+        <div class="text-center mb-3">
+          <img
+            src="/logoSGM.JPG"
+            alt="SGM Logo"
+            style="width: 150px;"
+          >
+        </div>
+
+        <div class="text-center mb-4">
+          <h3 class="login-title">Login</h3>
+        </div>
+
+          <form method="get" action="portalAdimistracao.html">
+          <div class="form-outline mb-4" data-mdb-input-init>
+            <input type="email" id="email" name="email" class="form-control" placeholder="email@exemplo.com" required />
+            <label class="form-label" for="email">Email</label>
+          </div>
+
+          <div class="form-outline mb-4" data-mdb-input-init>
+            <input type="password" id="password" name="password" class="form-control" placeholder="********" required />
+            <label class="form-label" for="password">Password</label>
+          </div>
+
+          <!-- Botão de submit -->
+          <button type="submit" class="btn btn-block gradient-custom btn-login mb-3">Log in</button>
+
+          <div class="text-center">
+            <a href="#!">Forgot password?</a>
+          </div>
+        </form>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MDBootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/mdb-ui-kit@6.4.2/js/mdb.min.js"></script>
+</body>
+</html>

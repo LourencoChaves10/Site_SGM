@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <title>Portal de Administração | Oficina</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link href="https://cdn.jsdelivr.net/npm/mdb-ui-kit@6.4.2/css/mdb.min.css" rel="stylesheet">
+
+  <style>
+    body {
+      background-color: #f4f6f8;
+      scroll-behavior: smooth;
+    }
+
+    .sidebar {
+      width: 240px;
+      height: 100vh;
+      position: fixed;
+      background-color: #023E7D;
+      color: white;
+    }
+
+    .sidebar a {
+      color: white;
+      display: block;
+      padding: 12px 20px;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .sidebar a:hover {
+      background-color: #0353A4;
+    }
+
+    .content {
+      margin-left: 240px;
+      padding: 25px;
+    }
+
+    section {
+      margin-bottom: 60px;
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- SIDEBAR -->
+<div class="sidebar">
+  <h5 class="text-center py-4 border-bottom"><img
+            src="/logoSGM.JPG"
+            alt="SGM Logo"
+            style="width: 150px" id="logoSGM"></h5>
+
+  <a data-target="dashboard">Dashboard</a>
+  <a data-target="clientes">Clientes</a>
+  <a data-target="viaturas">Viaturas</a>
+  <a data-target="servicos">Serviços</a>
+  <a data-target="mecanicos">Mecânicos</a>
+  <a href="index.html" class="mt-5 text-danger">Logout</a>
+</div>
+
+<!-- CONTEÚDO -->
+<div class="content">
+
+  <!-- DASHBOARD -->
+  <section id="dashboard">
+    <h3>Dashboard</h3>
+    <div class="row mt-4 g-4">
+      <div class="col-md-4">
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <h6>Clientes</h6>
+            <h3>1</h3>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <h6>Mecânicos Ativos</h6>
+            <h3>1</h3>
+            <div class="progress mt-2">
+              <div class="progress-bar bg-danger" role="progressbar" style="width: 50%"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <h6>Serviços Ativos</h6>
+            <h3>1</h3>
+            <div class="progress mt-2">
+              <div class="progress-bar bg-success" role="progressbar" style="width: 100%"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CLIENTES -->
+  <section id="clientes">
+    <h3>Clientes</h3>
+    <table class="table table-striped mt-3">
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>Email</th>
+          <th>Telefone</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Lourenço Chaves</td>
+          <td>lourenco.chaves@email.com</td>
+          <td>912 345 678</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- VIATURAS -->
+  <section id="viaturas">
+    <h3>Viaturas</h3>
+    <table class="table table-striped mt-3">
+      <thead>
+        <tr>
+          <th>Cliente</th>
+          <th>Viatura</th>
+          <th>Matrícula</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Lourenço Chaves</td>
+          <td>Volkswagen Golf 1.6 TDI</td>
+          <td>12-AB-34</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- SERVIÇOS -->
+  <section id="servicos">
+    <h3>Serviços</h3>
+    <table class="table table-striped mt-3">
+      <thead>
+        <tr>
+          <th>Cliente</th>
+          <th>Viatura</th>  
+          <th>Mecânico</th>
+          <th>Estado</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Lourenço Chaves</td>
+          <td>VW Golf 1.6 TDI</td>
+          <td>Paulo Gonçalves</td>
+          <td><span class="badge bg-warning">Em curso</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- MECÂNICOS -->
+  <section id="mecanicos">
+    <h3>Mecânicos</h3>
+    <table class="table table-striped mt-3">
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>Função</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Paulo Gonçalves</td>
+          <td>Mecânico Principal</td>
+          <td><span class="badge bg-success">Ativo</span></td>
+        </tr>
+        <tr>
+          <td>João Martins</td>
+          <td>Mecânico Auxiliar</td>
+          <td><span class="badge bg-secondary">Inativo</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+</div>
+
+<script src="JSPortalADM.JS"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/mdb-ui-kit@6.4.2/js/mdb.min.js"></script>
+</body>
+</html>
