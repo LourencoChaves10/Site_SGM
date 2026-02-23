@@ -34,3 +34,9 @@ document.getElementById('logoSGM').addEventListener('click', () => {
   firstClick = true; // permite o comportamento normal do menu novamente
   window.scrollTo({ top: 0, behavior: 'smooth' }); // opcional: ir ao topo
 });
+function showView(viewId) {
+  document.querySelectorAll('.view').forEach(function(view) {
+    view.classList.remove('active');
+  });
+  document.getElementById(viewId).classList.add('active');
+}

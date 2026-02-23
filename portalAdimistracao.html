@@ -1,24 +1,29 @@
 <!DOCTYPE html>
 <html lang="pt">
+
 <head>
   <meta charset="UTF-8">
-  <title>Portal de Administração | Oficina</title>
+  <title>Portal Oficina</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <link href="https://cdn.jsdelivr.net/npm/mdb-ui-kit@6.4.2/css/mdb.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/mdb-ui-kit@6.4.2/css/mdb.min.css" rel="stylesheet" />
 
   <style>
     body {
+      margin: 0;
       background-color: #f4f6f8;
-      scroll-behavior: smooth;
     }
 
     .sidebar {
-      width: 240px;
+      width: 250px;
       height: 100vh;
       position: fixed;
+      top: 0;
+      left: 0;
       background-color: #023E7D;
       color: white;
+      overflow-y: auto;
+      z-index: 1000;
     }
 
     .sidebar a {
@@ -33,169 +38,364 @@
       background-color: #0353A4;
     }
 
-    .content {
-      margin-left: 240px;
-      padding: 25px;
+    .submenu a {
+      padding-left: 40px;
+      font-size: 14px;
+      background-color: #012A5A;
     }
 
-    section {
-      margin-bottom: 60px;
+    .content {
+      margin-left: 250px;
+      padding: 30px;
+    }
+
+    .view {
+      display: none;
+    }
+
+    .view.active {
+      display: block;
+    }
+
+    .table-responsive {
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
     }
   </style>
 </head>
 
 <body>
 
-<!-- SIDEBAR -->
-<div class="sidebar">
-  <h5 class="text-center py-4 border-bottom"><img
-            src="/Imagens/logoSGM.JPG"
-            alt="SGM Logo"
-            style="width: 150px" id="logoSGM"></h5>
+  <!-- SIDEBAR -->
+  <div class="sidebar">
+    <h5 class="text-center py-4 border-bottom">
+      <img src="/Imagens/logoSGM.JPG" style="width:150px">
+    </h5>
 
-  <a data-target="dashboard">Dashboard</a>
-  <a data-target="clientes">Clientes</a>
-  <a data-target="viaturas">Viaturas</a>
-  <a data-target="servicos">Serviços</a>
-  <a data-target="mecanicos">Mecânicos</a>
-  <a href="login.html" class="mt-5 text-danger">Logout</a>
-</div>
+    <a onclick="showView('dashboardView')">Dashboard</a>
+    <a onclick="showView('alertasView')">Alertas</a>
 
-<!-- CONTEÚDO -->
-<div class="content">
+    <a data-mdb-toggle="collapse" data-mdb-target="#menuTabelas">
+      Tabelas
+    </a>
 
-  <!-- DASHBOARD -->
-  <section id="dashboard">
-    <h3>Dashboard</h3>
-    <div class="row mt-4 g-4">
-      <div class="col-md-4">
-        <div class="card shadow-sm">
-          <div class="card-body">
-            <h6>Clientes</h6>
-            <h3>1</h3>
-          </div>
-        </div>
+    <div class="collapse submenu" id="menuTabelas">
+      <a onclick="showView('clientesView')">Clientes</a>
+      <a onclick="showView('viaturasView')">Viaturas</a>
+      <a onclick="showView('reparacoesView')">Reparações</a>
+      <a onclick="showView('funcionariosView')">Funcionários</a>
+      <a onclick="showView('pecasView')">Peças</a>
+    </div>
+  </div>
+
+  <!-- CONTEÚDO -->
+  <div class="content">
+
+    <!-- ALERTAS -->
+    <div id="alertasView" class="view">
+      <h3 class="mb-4">Alertas</h3>
+
+      <div class="alert alert-danger">
+      Stock baixo: Filtro de óleo (3 unidades)
       </div>
-      <div class="col-md-4">
-        <div class="card shadow-sm">
-          <div class="card-body">
-            <h6>Mecânicos Ativos</h6>
-            <h3>1</h3>
-            <div class="progress mt-2">
-              <div class="progress-bar bg-danger" role="progressbar" style="width: 50%"></div>
+
+      <div class="alert alert-warning">
+      Reparação pendente há mais de 5 dias do cliente Lourenço Chaves
+      </div>
+
+      <div class="alert alert-info">
+      Revisão agendada para amanhã do cliente Lourenço Chaves
+      </div>
+    </div>
+
+    <!-- DASHBOARD -->
+    <div id="dashboardView" class="view active">
+      <h3 class="mb-4">Dashboard</h3>
+
+      <div class="row g-4">
+        <div class="col-md-3">
+          <div class="card shadow-sm">
+            <div class="card-body">
+              <h6>Número de Clientes</h6>
+              <h3>1</h3>
             </div>
           </div>
         </div>
-      </div>
-      <div class="col-md-4">
-        <div class="card shadow-sm">
-          <div class="card-body">
-            <h6>Serviços Ativos</h6>
-            <h3>1</h3>
-            <div class="progress mt-2">
-              <div class="progress-bar bg-success" role="progressbar" style="width: 100%"></div>
+
+        <div class="col-md-3">
+          <div class="card shadow-sm">
+            <div class="card-body">
+              <h6>Número de Funcionários</h6>
+              <h3>2</h3>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-3">
+          <div class="card shadow-sm">
+            <div class="card-body">
+              <h6>Reparações Ativas</h6>
+              <h3>1</h3>
+              <div class="progress mt-2">
+                <div class="progress-bar bg-success" style="width: 100%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-3">
+          <div class="card shadow-sm">
+            <div class="card-body">
+              <h6>Mecânicos Ativos</h6>
+              <h3>1</h3>
+              <div class="progress mt-2">
+                <div class="progress-bar bg-danger" style="width: 50%"></div>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </section>
 
-  <!-- CLIENTES -->
-  <section id="clientes">
-    <h3>Clientes</h3>
-    <table class="table table-striped mt-3">
-      <thead>
-        <tr>
-          <th>Nome</th>
-          <th>Email</th>
-          <th>Telefone</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Lourenço Chaves</td>
-          <td>lourenco.chaves@email.com</td>
-          <td>912 345 678</td>
-        </tr>
-      </tbody>
-    </table>
-  </section>
+    <!-- CLIENTES -->
+    <div id="clientesView" class="view">
+      <div class="accordion">
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button" data-mdb-toggle="collapse" data-mdb-target="#collapseClientes">
+              Tabela Clientes
+            </button>
+          </h2>
+          <div id="collapseClientes" class="accordion-collapse collapse show">
+            <div class="accordion-body">
+              <div class="table-responsive">
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th>Nome</th>
+                      <th>NIF</th>
+                      <th>Data de Nascimento</th>
+                      <th>Telemóvel</th>
+                      <th>Email</th>
+                      <th>Morada</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Lourenço Chaves</td>
+                      <td>123456789</td>
+                      <td>1980-01-01</td>
+                      <td>912 345 678</td>
+                      <td>lourenco.chaves@email.com</td>
+                      <td>Rua das Flores, 123</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-  <!-- VIATURAS -->
-  <section id="viaturas">
-    <h3>Viaturas</h3>
-    <table class="table table-striped mt-3">
-      <thead>
-        <tr>
-          <th>Cliente</th>
-          <th>Viatura</th>
-          <th>Matrícula</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Lourenço Chaves</td>
-          <td>Volkswagen Golf 1.6 TDI</td>
-          <td>12-AB-34</td>
-        </tr>
-      </tbody>
-    </table>
-  </section>
+    <!-- VIATURAS -->
+    <div id="viaturasView" class="view">
+      <div class="accordion">
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button" data-mdb-toggle="collapse" data-mdb-target="#collapseViaturas">
+              Tabela Viaturas
+            </button>
+          </h2>
+          <div id="collapseViaturas" class="accordion-collapse collapse show">
+            <div class="accordion-body">
+              <div class="table-responsive">
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th>Nome do cliente</th>
+                      <th>Tipo</th>
+                      <th>Marca</th>
+                      <th>Modelo</th>
+                      <th>Cor</th>
+                      <th>Combustível</th>
+                      <th>Quilómetros</th>
+                      <th>Ano de fabrico</th>
+                      <th>VIN</th>
+                      <th>Número do motor</th>
+                      <th>Matrícula</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Lourenço Chaves</td>
+                      <td>Carro</td>
+                      <td>BMW</td>
+                      <td>320i</td>
+                      <td>Preto</td>
+                      <td>Gasolina</td>
+                      <td>12000</td>
+                      <td>2020</td>
+                      <td>WBA12345678901234</td>
+                      <td>123456789</td>
+                      <td>12-AB-34</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-  <!-- SERVIÇOS -->
-  <section id="servicos">
-    <h3>Serviços</h3>
-    <table class="table table-striped mt-3">
-      <thead>
-        <tr>
-          <th>Cliente</th>
-          <th>Viatura</th>  
-          <th>Mecânico</th>
-          <th>Estado</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Lourenço Chaves</td>
-          <td>VW Golf 1.6 TDI</td>
-          <td>Paulo Gonçalves</td>
-          <td><span class="badge bg-warning">Em curso</span></td>
-        </tr>
-      </tbody>
-    </table>
-  </section>
+    <!-- REPARAÇÕES -->
+    <div id="reparacoesView" class="view">
+      <div class="accordion">
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button" data-mdb-toggle="collapse" data-mdb-target="#collapseReparacoes">
+              Tabela Reparações
+            </button>
+          </h2>
+          <div id="collapseReparacoes" class="accordion-collapse collapse show">
+            <div class="accordion-body">
+              <div class="table-responsive">
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th>Cliente</th>
+                      <th>Marca da viatura</th>
+                      <th>Mecânico</th>
+                      <th>Data de Início</th>
+                      <th>Data de Fim</th>
+                      <th>Situação</th>
+                      <th>Custo Total</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Lourenço Chaves</td>
+                      <td>BMW</td>
+                      <td>Paulo Gonçalves</td>
+                      <td>2024-01-01</td>
+                      <td>2024-01-05</td>
+                      <td><span class="badge bg-success">Concluída</span></td>
+                      <td>150€</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-  <!-- MECÂNICOS -->
-  <section id="mecanicos">
-    <h3>Mecânicos</h3>
-    <table class="table table-striped mt-3">
-      <thead>
-        <tr>
-          <th>Nome</th>
-          <th>Função</th>
-          <th>Status</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Paulo Gonçalves</td>
-          <td>Mecânico Principal</td>
-          <td><span class="badge bg-success">Ativo</span></td>
-        </tr>
-        <tr>
-          <td>João Martins</td>
-          <td>Mecânico Auxiliar</td>
-          <td><span class="badge bg-secondary">Inativo</span></td>
-        </tr>
-      </tbody>
-    </table>
-  </section>
+    <!-- FUNCIONÁRIOS -->
+    <div id="funcionariosView" class="view">
+      <div class="accordion">
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button" data-mdb-toggle="collapse" data-mdb-target="#collapseFuncionarios">
+              Tabela Funcionários
+            </button>
+          </h2>
+          <div id="collapseFuncionarios" class="accordion-collapse collapse show">
+            <div class="accordion-body">
+              <div class="table-responsive">
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th>Nome</th>
+                      <th>Cargo</th>
+                      <th>Situação</th>
+                      <th>NIF</th>
+                      <th>Data de Nascimento</th>
+                      <th>Telemóvel</th>
+                      <th>Email</th>
+                      <th>Morada</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Paulo Gonçalves</td>
+                      <td>Mecânico Principal</td>
+                      <td><span class="badge bg-success">Ativo</span></td>
+                      <td>123456789</td>
+                      <td>1985-05-15</td>
+                      <td>912 345 678</td>
+                      <td>paulo.goncalves@email.com</td>
+                      <td>Rua dos Mecânicos, 45</td>
+                    </tr>
+                    <tr>
+                      <td>João Martins</td>
+                      <td>Mecânico Auxiliar</td>
+                      <td><span class="badge bg-secondary">Inativo</span></td>
+                      <td>987654321</td>
+                      <td>1990-10-20</td>
+                      <td>913 456 789</td>
+                      <td>joao.martins@email.com</td>
+                      <td>Rua Solar do Leões, 45</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-</div>
+    <!-- PEÇAS -->
+    <div id="pecasView" class="view">
+      <div class="accordion">
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button" data-mdb-toggle="collapse" data-mdb-target="#collapsePecas">
+              Tabela Peças
+            </button>
+          </h2>
+          <div id="collapsePecas" class="accordion-collapse collapse show">
+            <div class="accordion-body">
+              <div class="table-responsive">
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th>Nome da peça</th>
+                      <th>Marca</th>
+                      <th>Modelo</th>
+                      <th>Ano</th>
+                      <th>Preço</th>
+                      <th>Stock</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Filtro de óleo</td>
+                      <td>Bosch</td>
+                      <td>BMW 320i</td>
+                      <td>2020</td>
+                      <td>30€</td>
+                      <td>15 unidades</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-<script src="JSPortalADM.JS"></script>
+  </div>
 
-<script src="https://cdn.jsdelivr.net/npm/mdb-ui-kit@6.4.2/js/mdb.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mdb-ui-kit@6.4.2/js/mdb.min.js"></script>
+  <script src="JSPortalADM.JS"></script>
+
 </body>
+
 </html>
