@@ -1,184 +1,235 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="en">
+
 <head>
   <meta charset="UTF-8">
-  <title>Sistema de Gestão Mecânica</title>
+  <title>Mechanical Management System</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
-  <style>
-    body {
-      background-color: #EEF0F2;
-      color: #141414;
-    }
-
-    .navbar {
-      background-color: #011638;
-    }
-
-    .navbar-brand,
-    .nav-link {
-      color: #FFFFFF !important;
-      font-weight: 500;
-    }
-
-    .nav-link:hover {
-      color: #89CFF0 !important;
-    }
-
-    .btn-login {
-      background-color: #0466C8;
-      color: #FFFFFF;
-      border: none;
-      padding: 8px 18px;
-    }
-
-    .btn-login:hover {
-      background-color: #0353A4;
-      color: #FFFFFF;
-    }
-
-      .hero {
-    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('./Imagens/bg_Site.jpg') no-repeat;
-    background-size: cover;
-    background-position: center;
-    color: #FFFFFF;
-    padding: 100px 20px;
-    text-align: center;
-    max-width: 9000px;
+<style>
+  html {
+    scroll-behavior: smooth;
   }
 
-    .hero h1 {
-      font-size: 42px;
-      font-weight: 700;
-    }
+  body {
+    background-color: #F0F3F8; /* fundo mais moderno, suave */
+    color: #141414; /* onyx */
+    padding-top: 80px;
+    font-family: 'Segoe UI', Roboto, sans-serif;
+  }
 
-    .hero p {
-      font-size: 18px;
-      margin-top: 15px;
-    }
+  .navbar {
+    background: linear-gradient(90deg, #0D21A1, #0353A4); /* gradiente moderno */
+  }
 
-    .section {
-      padding: 70px 0;
-    }
+  .navbar-brand,
+  .nav-link {
+    color: #FFFFFF !important;
+    font-weight: 600;
+  }
 
-    .section-title {
-      color: #002855;
-      font-weight: 700;
-      margin-bottom: 30px;
-      text-align: center;
-    }
+  .nav-link:hover {
+    color: #FFD166 !important; /* amarelo vibrante */
+    transition: color 0.3s ease;
+  }
 
-    .card {
-      border: none;
-      border-radius: 12px;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.05);
-      transition: 0.3s;
-      height: 100%;
-    }
+  .navbar-toggler {
+    border: none;
+  }
 
-    .card:hover {
-      transform: translateY(-5px);
-    }
+  .navbar-toggler-icon {
+    filter: invert(1);
+  }
 
-    .card-title {
-      color: #023E7D;
-      font-weight: 600;
-    }
+  .btn-login {
+    background: linear-gradient(90deg, #0466C8, #118AB2); /* botão chamativo */
+    color: #FFFFFF;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+  }
 
-    .footer {
-      background-color: #011638;
-      color: #FFFFFF;
-      padding: 40px 0;
-      text-align: center;
-    }
-  </style>
+  .btn-login:hover {
+    background: linear-gradient(90deg, #0353A4, #023E7D);
+    transform: scale(1.05);
+    color: #FFFFFF;
+  }
+
+  .hero {
+    background: url('./Imagens/bg_Site.jpg') center/cover no-repeat;
+    color: #FFFFFF;
+    padding: 140px 20px;
+    text-align: center;
+  }
+
+  .hero h1 {
+    font-size: 48px;
+    font-weight: 800;
+    color: #FFD166; /* amarelo vibrante */
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.4);
+  }
+
+  .hero p {
+    font-size: 20px;
+    margin-top: 15px;
+    color: #EEF0F2;
+  }
+
+  .section {
+    padding: 80px 0;
+    background-color: #FFFFFF;
+  }
+
+  .section:nth-child(even) {
+    background-color: #F0F3F8; /* fundo suave */
+  }
+
+  .section-title {
+    color: #073B4C; /* azul escuro moderno */
+    font-weight: 800;
+    margin-bottom: 40px;
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  .card {
+    border: none;
+    border-radius: 16px;
+    background: linear-gradient(135deg, #FFB703, #FFD166); /* gradiente chamativo */
+    border: 4px solid #118AB2; /* azul vibrante */
+    box-shadow: 0 10px 25px rgba(1, 22, 56, 0.15);
+    transition: all 0.3s ease;
+    height: 100%;
+  }
+
+  .card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 16px 40px rgba(1, 22, 56, 0.25);
+  }
+
+  .card-title {
+    color: #073B4C; /* azul escuro moderno */
+    font-weight: 700;
+  }
+
+  .footer {
+    background: linear-gradient(90deg, #0D21A1, #023E7D);
+    color: #EEF0F2;
+    padding: 50px 0;
+    text-align: center;
+    font-weight: 500;
+  }
+
+  /* Contact Form */
+  .contact-form {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #FFFFFF;
+    padding: 35px;
+    border-radius: 16px;
+    box-shadow: 0 12px 30px rgba(1, 22, 56, 0.15);
+    transition: all 0.3s ease;
+  }
+
+  .contact-form:hover {
+    box-shadow: 0 16px 40px rgba(1, 22, 56, 0.25);
+  }
+
+  .contact-form .form-control {
+    border-radius: 10px;
+    border: 2px solid #118AB2;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .contact-form .form-control:focus {
+    border-color: #FFD166;
+    box-shadow: 0 0 8px rgba(255, 209, 102, 0.5);
+  }
+
+  .contact-form .btn-submit {
+    background: linear-gradient(90deg, #0466C8, #118AB2);
+    color: #FFFFFF;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 10px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+  }
+
+  .contact-form .btn-submit:hover {
+    background: linear-gradient(90deg, #0353A4, #023E7D);
+    transform: scale(1.05);
+  }
+  /* Team Section */
+#equipa .card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#equipa .card:hover {
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 16px 40px rgba(1, 22, 56, 0.25);
+}
+
+</style>
 </head>
 
 <body>
 
-<nav class="navbar navbar-expand-lg fixed-top shadow">
-  <div class="container">
-    <a class="navbar-brand" href="#">Sistema de Gestão Mecânica</a>
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg fixed-top shadow">
+    <div class="container">
+      <a class="navbar-brand" href="#">SGM</a>
 
-    <div class="collapse navbar-collapse">
-      <ul class="navbar-nav me-auto">
-        <li class="nav-item"><a class="nav-link" href="#sobre">Sobre</a></li>
-        <li class="nav-item"><a class="nav-link" href="#linguagens">Linguagens</a></li>
-        <li class="nav-item"><a class="nav-link" href="#estrutura">Estrutura</a></li>
-        <li class="nav-item"><a class="nav-link" href="#seguranca">Segurança</a></li>
-        <li class="nav-item"><a class="nav-link" href="#contactos">Contactos</a></li>
-      </ul>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-      <a href="login.html" class="btn btn-login">Iniciar Sessão</a>
+      <div class="collapse navbar-collapse" id="navbarContent">
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item"><a class="nav-link" href="#sobre">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#funcionalidades">Features</a></li>
+          <li class="nav-item"><a class="nav-link" href="#linguagens">Languages</a></li>
+          <li class="nav-item"><a class="nav-link" href="#softwares">Softwares</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contactos">Contact</a></li>
+        </ul>
+
+        <a href="login.html" class="btn btn-login">Login</a>
+      </div>
     </div>
-  </div>
-</nav>
+  </nav>
 
-<section class="hero">
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <h1>SGM - Sistema de Gestão Mecânica</h1>
+      <p>Professional platform for complete automotive workshop management</p>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="sobre" class="section">
+    <div class="container">
+      <h2 class="section-title">About the System</h2>
+      <p class="text-center">
+        The SGM is a digital solution developed to optimize all operational processes of
+        an automotive workshop. The platform centralizes information about customers,
+        vehicles, appointments, repairs, and parts.
+      </p>
+    </div>
+  </section>
+  <!-- TEAM / EQUIPA -->
+<section id="equipa" class="section">
   <div class="container">
-    <h1></h1>
-    <p>Plataforma profissional para gestão completa de oficinas automóveis</p>
-  </div>
-</section>
+    <h2 class="section-title">Our Team</h2>
+    <div class="row justify-content-center">
 
-<section id="sobre" class="section">
-  <div class="container">
-    <h2 class="section-title">Sobre o Sistema</h2>
-    <p class="text-center">
-      O Sistema de Gestão Mecânica é uma solução digital desenvolvida para otimizar todos os processos operacionais de uma oficina automóvel.
-      A plataforma centraliza informação de clientes, viaturas, marcações, reparações e peças, permitindo uma gestão organizada, eficiente e totalmente integrada.
-    </p>
-    <p class="text-center">
-      A arquitetura do sistema foi projetada com base num modelo relacional estruturado, garantindo integridade dos dados e consistência nas operações realizadas.
-    </p>
-  </div>
-</section>
-
-<section id="linguagens" class="section bg-light">
-  <div class="container">
-    <h2 class="section-title">Linguagens Utilizadas</h2>
-    <div class="row g-4">
-
-      <div class="col-md-4">
-        <div class="card p-3 text-center">
-          <img src="./Imagens/java.png" alt="Java Logo" class="card-img-top" style="height: 150px; object-fit: contain;">
-          <h5 class="card-title mt-3">Java</h5>
-        </div>
-      </div>
-
-      <div class="col-md-4">
-        <div class="card p-3 text-center">
-          <img src="./Imagens/sql.png" alt="SQL Logo" class="card-img-top" style="height: 150px; object-fit: contain;">
-          <h5 class="card-title mt-3">SQL</h5>
-        </div>
-      </div>
-
-      <div class="col-md-4">
-        <div class="card p-3 text-center">
-          <img src="./Imagens/html.png" alt="HTML Logo" class="card-img-top" style="height: 150px; object-fit: contain;">
-          <h5 class="card-title mt-3">HTML</h5>
-        </div>
-      </div>
-
-      <div class="col-md-4">
-        <div class="card p-3 text-center">
-          <img src="./Imagens/css.png" alt="CSS Logo" class="card-img-top" style="height: 150px; object-fit: contain;">
-          <h5 class="card-title mt-3">CSS</h5>
-        </div>
-      </div>
-
-      <div class="col-md-4">
-        <div class="card p-3 text-center">
-          <img src="./Imagens/javascript.png" alt="JavaScript Logo" class="card-img-top" style="height: 150px; object-fit: contain;">
-          <h5 class="card-title mt-3">JavaScript</h5>
-        </div>
-      </div>
-
-      <div class="col-md-4">
-        <div class="card p-3 text-center">
-          <img src="./Imagens/xml.png" alt="XML Logo" class="card-img-top" style="height: 150px; object-fit: contain;">
-          <h5 class="card-title mt-3">XML</h5>
+      <div class="col-md-4 text-center">
+        <div class="card p-4">
+          <img src="./Imagens/avatar.jpg" alt="Seu Avatar" class="rounded-circle mb-3 d-block mx-auto"  style="width:150px; height:150px; object-fit: cover; border:3px solid #0466C8;">
+          <h5 class="card-title">Lourenço Chaves</h5>
         </div>
       </div>
 
@@ -186,52 +237,217 @@
   </div>
 </section>
 
+  <!-- FEATURES -->
+  <section id="funcionalidades" class="section">
+    <div class="container">
+      <h2 class="section-title">System Features</h2>
+      <div class="row g-4">
 
-<section id="estrutura" class="section">
-  <div class="container">
-    <h2 class="section-title">Estrutura do Sistema</h2>
-    <p class="text-center">
-      O sistema é suportado por uma base de dados relacional composta por entidades interligadas através de chaves primárias e estrangeiras.
-      As tabelas incluem utilizadores, roles, viaturas, marcações, reparações, pedidos e peças.
-    </p>
-    <p class="text-center">
-      Esta estrutura garante integridade referencial, escalabilidade e organização lógica da informação, permitindo manutenção simples e crescimento sustentável da aplicação.
-    </p>
-  </div>
-</section>
+        <div class="col-md-4">
+          <div class="card p-4 text-center">
+            <h5>Client Management</h5>
+            <p>Register and manage customer information and service history.</p>
+          </div>
+        </div>
 
-<section id="seguranca" class="section bg-light">
-  <div class="container">
-    <h2 class="section-title">Segurança e Controlo</h2>
-    <p class="text-center">
-      O sistema implementa autenticação individual e controlo de permissões por perfil.
-      Cada ação realizada fica associada a um utilizador específico, garantindo rastreabilidade e responsabilidade.
-    </p>
-    <p class="text-center">
-      A estrutura assegura confidencialidade dos dados e proteção da informação da oficina e dos seus clientes.
-    </p>
-  </div>
-</section>
+        <div class="col-md-4">
+          <div class="card p-4 text-center">
+            <h5>Vehicle Tracking</h5>
+            <p>Monitor repair status and maintenance schedules.</p>
+          </div>
+        </div>
 
-<section id="contactos" class="section">
-  <div class="container text-center">
-    <h2 class="section-title">Contactos</h2>
-    <p>
-      Para demonstrações ou informações adicionais sobre o Sistema de Gestão Mecânica, entre em contacto com a equipa de desenvolvimento.
-    </p>
-    <p>
-      Uma solução moderna, eficiente e preparada para responder às exigências atuais do setor automóvel.
-    </p>
-  </div>
-</section>
+        <div class="col-md-4">
+          <div class="card p-4 text-center">
+            <h5>Inventory Control</h5>
+            <p>Manage stock levels and receive alerts for low inventory.</p>
+          </div>
+        </div>
 
-<footer class="footer">
-  <div class="container">
-    Sistema de Gestão Mecânica © 2026
-  </div>
-</footer>
+        <div class="col-md-4">
+          <div class="card p-4 text-center">
+            <h5>Invoice Generation</h5>
+            <p>Create invoices and generate automatic service reports.</p>
+          </div>
+        </div>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+        <div class="col-md-4">
+          <div class="card p-4 text-center">
+            <h5>Role-Based Access</h5>
+            <p>Different access levels for admin, mechanics and secretary.</p>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="card p-4 text-center">
+            <h5>Reports & Analytics</h5>
+            <p>View monthly performance statistics and financial reports.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- LANGUAGES -->
+  <section id="linguagens" class="section">
+    <div class="container">
+      <h2 class="section-title">Languages Used</h2>
+      <div class="row g-4">
+
+        <!-- Java -->
+        <div class="col-md-4">
+          <div class="card p-3 text-center">
+            <img src="./Imagens/java.png" class="card-img-top" style="height:150px;object-fit:contain;">
+            <h5 class="card-title mt-3">Java</h5>
+          </div>
+        </div>
+
+        <!-- SQL -->
+        <div class="col-md-4">
+          <div class="card p-3 text-center">
+            <img src="./Imagens/sql.png" class="card-img-top" style="height:150px;object-fit:contain;">
+            <h5 class="card-title mt-3">SQL</h5>
+          </div>
+        </div>
+
+        <!-- HTML -->
+        <div class="col-md-4">
+          <div class="card p-3 text-center">
+            <img src="./Imagens/html.png" class="card-img-top" style="height:150px;object-fit:contain;">
+            <h5 class="card-title mt-3">HTML</h5>
+          </div>
+        </div>
+
+        <!-- CSS -->
+        <div class="col-md-4">
+          <div class="card p-3 text-center">
+            <img src="./Imagens/css.png" class="card-img-top" style="height:150px;object-fit:contain;">
+            <h5 class="card-title mt-3">CSS</h5>
+          </div>
+        </div>
+
+        <!-- JS -->
+        <div class="col-md-4">
+          <div class="card p-3 text-center">
+            <img src="./Imagens/javascript.png" class="card-img-top" style="height:150px;object-fit:contain;">
+            <h5 class="card-title mt-3">JavaScript</h5>
+          </div>
+        </div>
+
+        <!-- XML -->
+        <div class="col-md-4">
+          <div class="card p-3 text-center">
+            <img src="./Imagens/xml.png" class="card-img-top" style="height:150px;object-fit:contain;">
+            <h5 class="card-title mt-3">XML</h5>
+          </div>
+        </div>
+
+        <!-- PHP -->
+        <div class="col-md-4 offset-md-4">
+          <div class="card p-3 text-center">
+            <img src="./Imagens/php.png" class="card-img-top" style="height:150px;object-fit:contain;">
+            <h5 class="card-title mt-3">PHP</h5>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SOFTWARES -->
+  <section id="softwares" class="section">
+    <div class="container">
+      <h2 class="section-title">Tecnologias Utilizadas</h2>
+      <div class="row g-4">
+
+        <div class="col-md-4">
+          <div class="card p-3 text-center">
+            <img src="./Imagens/androidStudio.png" class="card-img-top" style="height:150px;object-fit:contain;">
+            <h5 class="card-title mt-3">Android Studio</h5>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="card p-3 text-center">
+            <img src="./Imagens/laragon.png" class="card-img-top" style="height:150px;object-fit:contain;">
+            <h5 class="card-title mt-3">Laragon</h5>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="card p-3 text-center">
+            <img src="./Imagens/vscode.png" class="card-img-top" style="height:150px;object-fit:contain;">
+            <h5 class="card-title mt-3">VS Code</h5>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="card p-3 text-center">
+            <img src="./Imagens/github.png" class="card-img-top" style="height:150px;object-fit:contain;">
+            <h5 class="card-title mt-3">GitHub</h5>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="card p-3 text-center">
+            <img src="./Imagens/git.png" class="card-img-top" style="height:150px;object-fit:contain;">
+            <h5 class="card-title mt-3">Git</h5>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="card p-3 text-center">
+            <img src="./Imagens/dbeaver.png" class="card-img-top" style="height:150px;object-fit:contain;">
+            <h5 class="card-title mt-3">DBeaver</h5>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contactos" class="section">
+    <div class="container">
+      <h2 class="section-title">Contact</h2>
+      <p class="text-center">Email: </p>
+
+      <div class="contact-form mt-4">
+        <form action="#" method="POST">
+          <div class="mb-3">
+            <label for="name" class="form-label">Name</label>
+            <input type="text" class="form-control" id="name" name="name" required>
+          </div>
+
+          <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" id="email" name="email" required>
+          </div>
+
+          <div class="mb-3">
+            <label for="message" class="form-label">Message</label>
+            <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
+          </div>
+
+          <div class="text-center">
+            <button type="submit" class="btn btn-submit">Send Message</button>
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      Mechanical Management System © 2026
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
+
 </html>

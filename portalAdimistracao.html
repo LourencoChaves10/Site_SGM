@@ -8,63 +8,126 @@
 
   <link href="https://cdn.jsdelivr.net/npm/mdb-ui-kit@6.4.2/css/mdb.min.css" rel="stylesheet" />
 
-  <style>
-    body {
-      margin: 0;
-      background-color: #f4f6f8;
-    }
+<style>
+  body {
+    margin: 0;
+    background-color: #f4f6f8;
+    font-family: 'Segoe UI', sans-serif;
+  }
 
-    .sidebar {
-      width: 250px;
-      height: 100vh;
-      position: fixed;
-      top: 0;
-      left: 0;
-      background-color: #023E7D;
-      color: white;
-      overflow-y: auto;
-      z-index: 1000;
-    }
+  /* SIDEBAR */
+  .sidebar {
+    width: 260px;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: linear-gradient(180deg, #023E7D, #012A5A);
+    color: white;
+    overflow-y: auto;
+    z-index: 1000;
+    box-shadow: 2px 0 15px rgba(0, 0, 0, 0.1);
+  }
 
-    .sidebar a {
-      color: white;
-      display: block;
-      padding: 12px 20px;
-      text-decoration: none;
-      cursor: pointer;
-    }
+  .sidebar h5 {
+    font-weight: 600;
+    letter-spacing: 1px;
+  }
 
-    .sidebar a:hover {
-      background-color: #0353A4;
-    }
+  .sidebar a {
+    color: #e0e0e0;
+    display: block;
+    padding: 14px 20px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-size: 15px;
+    cursor: pointer;
+  }
 
-    .submenu a {
-      padding-left: 40px;
-      font-size: 14px;
-      background-color: #012A5A;
-    }
+  .sidebar a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding-left: 25px;
+  }
 
-    .content {
-      margin-left: 250px;
-      padding: 30px;
-    }
+  .submenu a {
+    padding-left: 45px;
+    font-size: 14px;
+    background-color: rgba(255, 255, 255, 0.05);
+  }
 
-    .view {
-      display: none;
-    }
+  /* CONTENT */
+  .content {
+    margin-left: 260px;
+    padding: 40px;
+    min-height: 100vh;
+  }
 
-    .view.active {
-      display: block;
-    }
+  .view {
+    display: none;
+  }
 
-    .table-responsive {
-      overflow-x: auto;
-    }
+  .view.active {
+    display: block;
+  }
 
-    table {
-      width: 100%;
-    }
-  </style>
+  /* CARDS DASHBOARD */
+  .card {
+    border: none;
+    border-radius: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    transition: 0.3s;
+  }
+
+  .card:hover {
+    transform: translateY(-5px);
+  }
+
+  .card h6 {
+    color: #6c757d;
+  }
+
+  .card h3 {
+    font-weight: bold;
+  }
+
+  /* TABLES */
+  table {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+  }
+
+  .table thead {
+    background-color: #023E7D;
+    color: white;
+  }
+
+  .table th {
+    font-weight: 500;
+  }
+
+  .table-striped > tbody > tr:nth-of-type(odd) {
+    background-color: #f2f5f9;
+  }
+
+  /* ACCORDION */
+  .accordion-button {
+    font-weight: 500;
+    background-color: #ffffff;
+  }
+
+  .accordion-button:not(.collapsed) {
+    background-color: #e9f1fb;
+    color: #023E7D;
+  }
+
+  /* ALERTAS */
+  .alert {
+    border-radius: 12px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+  }
+
+</style>
 </head>
 
 <body>
@@ -72,7 +135,7 @@
   <!-- SIDEBAR -->
   <div class="sidebar">
     <h5 class="text-center py-4 border-bottom">
-      <img src="/Imagens/logoSGM.JPG" style="width:150px">
+      <img src="./Imagens/logoSGM.JPG" style="width:150px">
     </h5>
 
     <a onclick="showView('dashboardView')">Dashboard</a>
